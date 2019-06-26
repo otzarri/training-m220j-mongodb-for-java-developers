@@ -33,12 +33,13 @@ or
 User stories within tickets provide a lot of information about which
 work was done and where.
 
-=============================== ================================================
-Title                           User Story location
-=============================== ================================================
-Ticket 1.1: Database Connection `tickets/ticket-1.1 <mflix/tickets/ticket-1.1>`_
-Ticket 1.2: Projection          `tickets/ticket-1.2 <mflix/tickets/ticket-1.2>`_
-=============================== ================================================
+================================ ======================================================
+Title                            User Story location
+================================ ======================================================
+Ticket 1.1: Database Connection  `mflix/tickets/ticket-1.1 <mflix/tickets/ticket-1.1>`_
+Ticket 1.2: Projection           `mflix/tickets/ticket-1.2 <mflix/tickets/ticket-1.2>`_
+Ticket 1.3: Subfield Text Search `mflix/tickets/ticket-1.3 <mflix/tickets/ticket-1.3>`_
+================================ ======================================================
 
 --------------
 

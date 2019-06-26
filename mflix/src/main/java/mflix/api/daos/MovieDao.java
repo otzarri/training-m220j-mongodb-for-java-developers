@@ -22,10 +22,6 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Sorts;
 
-import static com.mongodb.client.model.Projections.fields;
-import static com.mongodb.client.model.Projections.include;
-import static com.mongodb.client.model.Projections.exclude;
-
 
 @Component
 public class MovieDao extends AbstractMFlixDao {
@@ -139,7 +135,7 @@ public class MovieDao extends AbstractMFlixDao {
     List<Document> movies = new ArrayList<>();
     moviesCollection
         .find(queryFilter)
-        .projection(fields(include("title")))
+        .projection(Projections.fields(Projections.include("title")))
         .into(movies);
     // END Ticket 1.2: Projection
 
@@ -184,7 +180,12 @@ public class MovieDao extends AbstractMFlixDao {
   public List<Document> getMoviesByCast(String sortKey, int limit, int skip, String... cast) {
     Bson castFilter = null;
     Bson sort = null;
-    //TODO> Ticket: Subfield Text Search - implement the expected cast
+
+    // BEGIN Ticket 1.3: Subfield Text Search>  implement the expected cast
+    castFilter = Filters.in("cast", cast);
+    sort = Sorts.descending();
+    // END Ticket 1.3: Subfield Text Search>  implement the expected cast
+    
     // filter and sort
     List<Document> movies = new ArrayList<>();
     moviesCollection
