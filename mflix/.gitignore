@@ -1,2 +1,8 @@
-src/main/resources/application.properties
+.classpath
+.project
+.settings/
+
+*.md.html
+
+application.properties
 target/
