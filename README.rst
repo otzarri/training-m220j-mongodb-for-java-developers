@@ -3,10 +3,10 @@ Welcome to M220J
 ================
 
 This repository is where I store source code and documentation used
-during the course `M220J - MongoDB for Java Developers`_.
+during the course `M220J - MongoDB for Java Developers <https://university.mongodb.com/courses/M220J/about>`_.
 
 This and all the README files under ``tickets`` directory are copied
-from `Carlan's repo`_ who did a good work migrating them.
+from `Carlan's repo <https://github.com/carlan/m220j/>`_ who did a good work migrating them.
 
 Modifications done in source code have a comment with the ticket id
 above, for example:
