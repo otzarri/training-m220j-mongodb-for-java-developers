@@ -1,8 +1,9 @@
 package mflix.api.daos;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -10,9 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.BsonField;
+import com.mongodb.client.model.BucketOptions;
+import com.mongodb.client.model.Facet;
+import com.mongodb.client.model.Field;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Projections;
+import com.mongodb.client.model.Sorts;
+
+import static com.mongodb.client.model.Projections.fields;
+import static com.mongodb.client.model.Projections.include;
+import static com.mongodb.client.model.Projections.exclude;
+
 
 @Component
 public class MovieDao extends AbstractMFlixDao {
@@ -120,8 +133,15 @@ public class MovieDao extends AbstractMFlixDao {
 
     Bson queryFilter = new Document();
     Bson projection = new Document();
-    //TODO> Ticket: Projection - implement the query and projection required by the unit test
+    
+    // BEGIN Ticket 1.2: Projection > Implement the query and projection required by the unit test
+    queryFilter = Filters.all("countries", country);
     List<Document> movies = new ArrayList<>();
+    moviesCollection
+        .find(queryFilter)
+        .projection(fields(include("title")))
+        .into(movies);
+    // END Ticket 1.2: Projection
 
     return movies;
   }
