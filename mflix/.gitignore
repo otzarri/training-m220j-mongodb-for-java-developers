@@ -1,0 +1,8 @@
+.classpath
+.project
+.settings/
+
+*.md.html
+
+application.properties
+target/

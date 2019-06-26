@@ -1,8 +1,9 @@
 package mflix.api.daos;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -10,9 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.BsonField;
+import com.mongodb.client.model.BucketOptions;
+import com.mongodb.client.model.Facet;
+import com.mongodb.client.model.Field;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Projections;
+import com.mongodb.client.model.Sorts;
+
 
 @Component
 public class MovieDao extends AbstractMFlixDao {
@@ -120,8 +129,15 @@ public class MovieDao extends AbstractMFlixDao {
 
     Bson queryFilter = new Document();
     Bson projection = new Document();
-    //TODO> Ticket: Projection - implement the query and projection required by the unit test
+    
+    // BEGIN Ticket 1.2: Projection > Implement the query and projection required by the unit test
+    queryFilter = Filters.all("countries", country);
     List<Document> movies = new ArrayList<>();
+    moviesCollection
+        .find(queryFilter)
+        .projection(Projections.fields(Projections.include("title")))
+        .into(movies);
+    // END Ticket 1.2: Projection
 
     return movies;
   }
@@ -164,7 +180,12 @@ public class MovieDao extends AbstractMFlixDao {
   public List<Document> getMoviesByCast(String sortKey, int limit, int skip, String... cast) {
     Bson castFilter = null;
     Bson sort = null;
-    //TODO> Ticket: Subfield Text Search - implement the expected cast
+
+    // BEGIN Ticket 1.3: Subfield Text Search>  implement the expected cast
+    castFilter = Filters.in("cast", cast);
+    sort = Sorts.descending();
+    // END Ticket 1.3: Subfield Text Search>  implement the expected cast
+    
     // filter and sort
     List<Document> movies = new ArrayList<>();
     moviesCollection
