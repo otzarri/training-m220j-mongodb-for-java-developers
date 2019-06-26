@@ -2,6 +2,46 @@
 Welcome to M220J
 ================
 
+This repository is where I store source code and documentation used
+during the course `M220J - MongoDB for Java Developers`_.
+
+This and all the README files under ``tickets`` directory are copied
+from `Carlan's repo`_ who did a good work migrating them.
+
+Modifications done in source code have a comment with the ticket id
+above, for example:
+
+.. code:: properties
+
+   # BEGIN Ticket 1.1: Database Connection
+   spring.mongodb.uri=mongodb+srv://<username>:<password>@<hostname>/test
+   # END Ticket 1.1: Database Connection
+
+or
+
+.. code:: java
+
+       // BEGIN Ticket 1.2: Projection > Implement the query and projection required by the unit test
+       queryFilter = Filters.all("countries", country);
+       List<Document> movies = new ArrayList<>();
+       moviesCollection
+           .find(queryFilter)
+           .projection(fields(include("title")))
+           .into(movies);
+       // END Ticket 1.2: Projection
+
+User stories within tickets provide a lot of information about which
+work was done and where.
+
+=============================== =====================
+Title                           User Story location
+=============================== =====================
+Ticket 1.1: Database Connection `tickets/ticket-1.1`_
+Ticket 1.2: Projection          `tickets/ticket-1.2`_
+=============================== =====================
+
+--------------
+
 In this course we will be exploring how to use MongoDB in the Java environment.
 We will be looking into:
 
@@ -9,6 +49,28 @@ We will be looking into:
 - How to express CRUD operations in Java code
 - Using the Aggregation Framework to express analytical queries
 - Building an application backend in Java that interacts with MongoDB
+
+## What You'll Learn
+
+This course will teach you how to use MongoDB as the database for a Java application.
+
+You'll play the role of a back-end developer for a Java application, and your job is to implement the application's communication with MongoDB. This includes:
+
+- Reading and writing data
+- Using the Aggregation Framework
+- Managing the configuration of the database client through the Java driver
+- Creating a robust application by handling exceptions and timeouts
+
+**Prerequisites:**
+We highly recommend taking M001 prior to taking this course. A basic understanding of **MongoDB's document model** as well as familiarity with **Java development environments** will help you get the most out of this course.
+
+## What You'll Build
+
+You'll build the back-end for a movie-browsing application called MFlix.
+
+Using the MongoDB Java Driver, you will implement MFlix's basic functionality. This includes basic and complex movie searches, registering new users, and posting comments on the site.
+
+You will also add more features to the MFlix application. This includes writing analytical reports, increasing the durability of MFlix's connection with MongoDB, and implementing security best practices.
 
 
 Get Started
