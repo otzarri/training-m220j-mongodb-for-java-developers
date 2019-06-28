@@ -39,6 +39,10 @@ Title                            User Story location
 Ticket 1.1: Database Connection  `mflix/tickets/ticket-1.1 <mflix/tickets/ticket-1.1>`_
 Ticket 1.2: Projection           `mflix/tickets/ticket-1.2 <mflix/tickets/ticket-1.2>`_
 Ticket 1.3: Subfield Text Search `mflix/tickets/ticket-1.3 <mflix/tickets/ticket-1.3>`_
+Ticket 2.1: Faceted Search       `mflix/tickets/ticket-2.1 <mflix/tickets/ticket-2.1>`_
+Ticket 2.2: Paging               `mflix/tickets/ticket-2.2 <mflix/tickets/ticket-2.2>`_
+Ticket 2.3: User Management      `mflix/tickets/ticket-2.3 <mflix/tickets/ticket-2.3>`_
+Ticket 2.4: User Preferences     `mflix/tickets/ticket-2.4 <mflix/tickets/ticket-2.4>`_
 ================================ ======================================================
 
 --------------
